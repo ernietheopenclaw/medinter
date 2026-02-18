@@ -1,4 +1,4 @@
-"""MedInterpret — Real-time medical translation server."""
+"""MedInter — Real-time medical translation server."""
 
 from __future__ import annotations
 
@@ -37,16 +37,16 @@ tts_service: RivaTTS | None = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global asr_service, tts_service
-    logger.info(f"Starting MedInterpret server (mock_mode={MOCK_MODE})")
+    logger.info(f"Starting MedInter server (mock_mode={MOCK_MODE})")
     asr_service = RivaASR()
     tts_service = RivaTTS()
     yield
     await translator.close()
-    logger.info("MedInterpret server stopped")
+    logger.info("MedInter server stopped")
 
 
 app = FastAPI(
-    title="MedInterpret",
+    title="MedInter",
     description="Real-time medical translation powered by NVIDIA DGX Spark GB10",
     version="1.0.0",
     lifespan=lifespan,

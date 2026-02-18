@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MedInterpret",
+  title: "MedInter",
   description: "Real-time medical translation — no internet required",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "MedInterpret",
+    title: "MedInter",
   },
 };
 

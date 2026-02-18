@@ -78,7 +78,7 @@ export default function HomePage() {
       {/* Header */}
       <div className="text-center mb-8">
         <div className="text-5xl mb-3">🏥</div>
-        <h1 className="text-3xl font-bold text-primary">MedInterpret</h1>
+        <h1 className="text-3xl font-bold text-primary">MedInter</h1>
         <p className="text-gray-500 mt-2 text-lg">
           Every second matters. Every word matters.
         </p>

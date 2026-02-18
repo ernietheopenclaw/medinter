@@ -88,7 +88,7 @@ From the phone's browser:
 http://192.168.44.1:3000
 ```
 
-You should see the MedInterpret landing page. The connection indicator should show 🟢 Connected.
+You should see the MedInter landing page. The connection indicator should show 🟢 Connected.
 
 ## Troubleshooting
 

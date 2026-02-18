@@ -14,7 +14,7 @@ Create a WiFi hotspot on the GB10 so phones can connect directly. No internet or
 ```bash
 sudo nmcli device wifi hotspot \
   ifname wlan0 \
-  ssid "MedInterpret-GB10" \
+  ssid "MedInter-GB10" \
   password "med1nterpret" \
   band bg \
   channel 6
@@ -38,7 +38,7 @@ The hotspot typically assigns `10.42.0.1` to the GB10. Verify:
 ip addr show wlan0
 ```
 
-### 4. Verify MedInterpret is accessible
+### 4. Verify MedInter is accessible
 
 ```bash
 curl http://10.42.0.1:3000/api/health
@@ -47,13 +47,13 @@ curl http://10.42.0.1:3000/api/health
 ## On the Phone
 
 ### Android
-1. Settings → WiFi → Connect to "MedInterpret-GB10"
+1. Settings → WiFi → Connect to "MedInter-GB10"
 2. Password: `med1nterpret`
 3. You'll see "Connected, no internet" — that's expected
 4. Open Chrome → `http://10.42.0.1:3000`
 
 ### iPhone
-1. Settings → Wi-Fi → Join "MedInterpret-GB10"
+1. Settings → Wi-Fi → Join "MedInter-GB10"
 2. Password: `med1nterpret`
 3. iOS may warn "No Internet Connection" — tap "Use Without Internet"
 4. Open Safari → `http://10.42.0.1:3000`
@@ -86,5 +86,5 @@ All methods provide more than enough bandwidth for real-time audio streaming.
 ## Troubleshooting
 
 - **No WiFi adapter**: Check `nmcli device` — if no wifi device, use USB WiFi adapter or USB-C
-- **Phone warns "no internet"**: Expected — MedInterpret runs locally
+- **Phone warns "no internet"**: Expected — MedInter runs locally
 - **Can't reach web app**: Check firewall: `sudo ufw allow 3000/tcp`

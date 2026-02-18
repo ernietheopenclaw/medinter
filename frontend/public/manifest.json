@@ -1,6 +1,6 @@
 {
-  "name": "MedInterpret",
-  "short_name": "MedInterpret",
+  "name": "MedInter",
+  "short_name": "MedInter",
   "description": "Real-time medical translation — no internet required",
   "start_url": "/",
   "display": "standalone",

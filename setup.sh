@@ -1,9 +1,9 @@
 #!/bin/bash
-# MedInterpret — One-command setup for NVIDIA DGX Spark GB10
+# MedInter — One-command setup for NVIDIA DGX Spark GB10
 set -euo pipefail
 
 echo "╔═══════════════════════════════════════╗"
-echo "║     MedInterpret — GB10 Setup         ║"
+echo "║     MedInter — GB10 Setup         ║"
 echo "║  Real-time Medical Translation        ║"
 echo "╚═══════════════════════════════════════╝"
 echo ""
@@ -40,7 +40,7 @@ cd ..
 
 # Start services
 echo ""
-echo "🚀 Starting MedInterpret stack..."
+echo "🚀 Starting MedInter stack..."
 docker compose up -d
 
 echo ""
@@ -51,7 +51,7 @@ echo "   This may take several minutes on first run (model downloads)."
 for i in {1..60}; do
     if curl -sf http://localhost:3000/api/health >/dev/null 2>&1; then
         echo ""
-        echo "✅ MedInterpret is running!"
+        echo "✅ MedInter is running!"
         echo ""
         echo "╔═══════════════════════════════════════════════════╗"
         echo "║  Open on your phone:                             ║"

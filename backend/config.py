@@ -1,4 +1,4 @@
-"""MedInterpret Configuration."""
+"""MedInter Configuration."""
 
 import os
 
@@ -9,7 +9,7 @@ RIVA_TTS_ENDPOINT = os.getenv("RIVA_TTS_ENDPOINT", "localhost:50051")
 
 # NVIDIA NIM endpoint (OpenAI-compatible)
 NIM_ENDPOINT = os.getenv("NIM_ENDPOINT", "http://localhost:8000")
-NIM_MODEL = os.getenv("NIM_MODEL", "meta/llama-3.1-70b-instruct")
+NIM_MODEL = os.getenv("NIM_MODEL", "meta/llama-4-maverick-17b-128e-instruct")
 
 # Server
 HOST = os.getenv("HOST", "0.0.0.0")

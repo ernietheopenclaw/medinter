@@ -1,4 +1,4 @@
-# 🏥 MedInterpret
+# 🏥 MedInter
 
 **Every second matters. Every word matters. No internet required.**
 
@@ -19,13 +19,13 @@ Language barriers in emergency medicine cost lives.
 
 ## The Solution
 
-MedInterpret is a real-time medical interpreter that runs **entirely on a local NVIDIA DGX Spark GB10**. A phone connects to the GB10 via Bluetooth PAN, WiFi hotspot, or USB-C tethering — no internet required. The patient speaks in their language, and the EMT/doctor hears the translation in theirs, with automatic medical term extraction.
+MedInter is a real-time medical interpreter that runs **entirely on a local NVIDIA DGX Spark GB10**. A phone connects to the GB10 via Bluetooth PAN, WiFi hotspot, or USB-C tethering — no internet required. The patient speaks in their language, and the EMT/doctor hears the translation in theirs, with automatic medical term extraction.
 
 **No cloud. No internet. No data leaves the device. Ever.**
 
 ## Why Local Matters
 
-| Concern | Cloud Translation | MedInterpret |
+| Concern | Cloud Translation | MedInter |
 |---------|-------------------|--------------|
 | Audio of patient symptoms | Sent to third-party servers | Never leaves the GB10 |
 | Voice biometric data | Stored in cloud logs | Never recorded |
@@ -36,7 +36,7 @@ MedInterpret is a real-time medical interpreter that runs **entirely on a local 
 | Works in disaster zone | No | Yes |
 | Works underground | No | Yes |
 
-Audio of patients describing symptoms is **Protected Health Information (PHI)** under HIPAA. Voice is a **biometric identifier**. MedInterpret ensures neither ever leaves the device.
+Audio of patients describing symptoms is **Protected Health Information (PHI)** under HIPAA. Voice is a **biometric identifier**. MedInter ensures neither ever leaves the device.
 
 ## How It Works
 
@@ -73,11 +73,11 @@ Audio of patients describing symptoms is **Protected Health Information (PHI)** 
 
 ## NVIDIA Software Stack
 
-MedInterpret leverages the full NVIDIA AI software stack available on the DGX Spark GB10:
+MedInter leverages the full NVIDIA AI software stack available on the DGX Spark GB10:
 
 | Component | Purpose |
 |-----------|---------|
-| **NVIDIA NIM** | Optimized LLM inference (Llama 3.1 70B) for translation + medical NER |
+| **NVIDIA NIM** | Optimized LLM inference (Llama 4 Maverick) for translation + medical NER |
 | **NVIDIA Riva ASR** | Real-time automatic speech recognition in 13+ languages |
 | **NVIDIA Riva TTS** | Neural text-to-speech in multiple languages |
 | **TensorRT-LLM** | Optimized LLM inference engine (powers NIM) |
@@ -98,8 +98,8 @@ The DGX Spark GB10 has **128 GB unified memory** shared between CPU and GPU.
 |-----------|-------------|-------|
 | Riva ASR models | ~4 | Multilingual speech recognition |
 | Riva TTS models | ~2 | Neural voice synthesis |
-| NIM LLM (Llama 3.1 70B) | ~38 | 4-bit quantized, TensorRT-LLM |
-| MedInterpret app | <1 | FastAPI + frontend |
+| NIM LLM (Llama 4 Maverick) | ~38 | 4-bit quantized, TensorRT-LLM |
+| MedInter app | <1 | FastAPI + frontend |
 | OS + system | ~4 | DGX OS overhead |
 | **Total Used** | **~48** | |
 | **Available** | **~80** | For additional models, sessions |
@@ -134,8 +134,8 @@ The DGX Spark GB10 has **128 GB unified memory** shared between CPU and GPU.
 
 ```bash
 # Clone the repository
-git clone https://github.com/ernietheopenclaw/medinterpret.git
-cd medinterpret
+git clone https://github.com/ernietheopenclaw/medinter.git
+cd medinter
 
 # Run setup (pulls containers, builds frontend, starts everything)
 chmod +x setup.sh
@@ -151,7 +151,7 @@ docker login nvcr.io
 # Username: $oauthtoken
 # Password: <your NGC API key>
 
-docker pull nvcr.io/nvidia/nim/meta-llama-3.1-70b-instruct:latest
+docker pull nvcr.io/nvidia/nim/meta-llama-4-maverick-17b-128e-instruct:latest
 ```
 
 #### 2. Pull Riva Containers
@@ -160,7 +160,7 @@ docker pull nvcr.io/nvidia/nim/meta-llama-3.1-70b-instruct:latest
 docker pull nvcr.io/nvidia/riva/riva-speech:2.17.0
 ```
 
-#### 3. Build & Start MedInterpret
+#### 3. Build & Start MedInter
 
 ```bash
 # Build frontend
@@ -204,7 +204,7 @@ MOCK_MODE=true python -m uvicorn backend.main:app --host 0.0.0.0 --port 3000
 ### Minute 2: Zero Internet
 - Phone connects to GB10 via Bluetooth PAN
 - Show phone has NO internet (airplane mode + Bluetooth)
-- Open `http://192.168.44.1:3000` — MedInterpret loads
+- Open `http://192.168.44.1:3000` — MedInter loads
 - 🟢 Connected indicator
 
 ### Minute 3: Live Translation
@@ -232,7 +232,7 @@ MOCK_MODE=true python -m uvicorn backend.main:app --host 0.0.0.0 --port 3000
 ## Project Structure
 
 ```
-medinterpret/
+medinter/
 ├── backend/
 │   ├── main.py                  # FastAPI server + WebSocket
 │   ├── config.py                # Configuration
@@ -266,4 +266,4 @@ MIT License — See [LICENSE](LICENSE)
 
 **Built for the NVIDIA DGX Spark GB10**
 
-*MedInterpret is a prototype/demonstration application. It is not FDA-approved or certified for clinical use. Always use professional medical interpreters for critical clinical decisions.*
+*MedInter is a prototype/demonstration application. It is not FDA-approved or certified for clinical use. Always use professional medical interpreters for critical clinical decisions.*

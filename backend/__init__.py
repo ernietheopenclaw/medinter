@@ -1,1 +1,1 @@
-# MedInterpret Backend
+# MedInter Backend

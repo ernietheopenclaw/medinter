@@ -3,7 +3,7 @@ version: "3.8"
 services:
   riva:
     image: nvcr.io/nvidia/riva/riva-speech:2.17.0
-    container_name: medinterpret-riva
+    container_name: medinter-riva
     runtime: nvidia
     ports:
       - "50051:50051"
@@ -26,8 +26,8 @@ services:
     restart: unless-stopped
 
   nim:
-    image: nvcr.io/nvidia/nim/meta-llama-3.1-70b-instruct:latest
-    container_name: medinterpret-nim
+    image: nvcr.io/nvidia/nim/meta-llama-4-maverick-17b-128e-instruct:latest
+    container_name: medinter-nim
     runtime: nvidia
     ports:
       - "8000:8000"
@@ -48,18 +48,18 @@ services:
       retries: 10
     restart: unless-stopped
 
-  medinterpret:
+  medinter:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    container_name: medinterpret-app
+    container_name: medinter-app
     ports:
       - "3000:3000"
     environment:
       - RIVA_ASR_ENDPOINT=riva:50051
       - RIVA_TTS_ENDPOINT=riva:50051
       - NIM_ENDPOINT=http://nim:8000
-      - NIM_MODEL=meta/llama-3.1-70b-instruct
+      - NIM_MODEL=meta/llama-4-maverick-17b-128e-instruct
       - MOCK_MODE=false
       - HOST=0.0.0.0
       - PORT=3000

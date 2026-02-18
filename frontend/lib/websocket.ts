@@ -18,7 +18,7 @@ export type WsResponse =
 
 type Listener = (msg: WsResponse) => void;
 
-export class MedInterpreterWs {
+export class MedIntererWs {
   private ws: WebSocket | null = null;
   private listeners: Set<Listener> = new Set();
   private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
@@ -97,8 +97,8 @@ export class MedInterpreterWs {
 }
 
 // Singleton
-let instance: MedInterpreterWs | null = null;
-export function getWsClient(): MedInterpreterWs {
-  if (!instance) instance = new MedInterpreterWs();
+let instance: MedIntererWs | null = null;
+export function getWsClient(): MedIntererWs {
+  if (!instance) instance = new MedIntererWs();
   return instance;
 }
